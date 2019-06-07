@@ -1,0 +1,15 @@
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\bin\Debug\WorkshopSelector.exe.config
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\bin\Debug\WorkshopSelector.exe
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\bin\Debug\WorkshopSelector.pdb
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\obj\Debug\MainWindow.g.cs
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\obj\Debug\App.g.cs
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\obj\Debug\WorkshopSelector_MarkupCompile.cache
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\obj\Debug\WorkshopSelector_MarkupCompile.lref
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\obj\Debug\MainWindow.baml
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\obj\Debug\WorkshopSelector.g.resources
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\obj\Debug\WorkshopSelector.Properties.Resources.resources
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\obj\Debug\WorkshopSelector.csproj.GenerateResource.cache
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\obj\Debug\WorkshopSelector.csproj.CoreCompileInputs.cache
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\obj\Debug\WorkshopSelector.exe
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\obj\Debug\WorkshopSelector.pdb
+D:\CAD\Software Development\Assignment 4\WorkshopSelector\WorkshopSelector\obj\Debug\WorkshopSelector.csprojAssemblyReference.cache

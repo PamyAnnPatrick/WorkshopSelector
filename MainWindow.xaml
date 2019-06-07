@@ -1,0 +1,194 @@
+﻿<Window x:Class="WorkshopSelector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorkshopSelector"
+        mc:Ignorable="d"
+        Title="Workshop Selector" Height="600" Width="700">
+    <Window.Background>
+        <ImageBrush ImageSource="background.jpg" Opacity="100"></ImageBrush>
+    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="Background" Value="LightSlateGray" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Width" Value="130" />
+            <Setter Property="Height" Value="45" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderBrush" Value="Silver" />
+            <Setter Property="BorderThickness" Value="5" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="30" Background="{TemplateBinding Background}" BorderBrush="DarkSlateGray" BorderThickness="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="DescriptionStyle" TargetType="Label">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style x:Key="ErrorStyle" TargetType="Label">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="ValueStyle" TargetType="Label">
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Foreground" Value="DarkSlateGray"/>
+            <Setter Property="Width" Value="175"/>
+            <Setter Property="Height" Value="130"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+        </Style>
+        <Style TargetType="ListViewItem">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="DarkSlateGray"/>
+            <Setter Property="BorderBrush" Value="LightSlateGray"/>
+            <Setter Property="BorderThickness" Value=".5"/>
+            <Setter Property="HorizontalContentAlignment" Value="left"/>
+        </Style>
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Foreground" Value="DarkSlateGray"/>
+            <Setter Property="BorderBrush" Value="LightSlateGray"/>
+            <Setter Property="BorderThickness" Value=".5"/>
+            <Setter Property="HorizontalContentAlignment" Value="left"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="SubGrid" TargetType="Grid">
+            <Setter Property="Width" Value="320"/>
+            <Setter Property="Height" Value="Auto"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Border">
+            <Setter Property="BorderBrush" Value="LightSlateGray"/>
+            <Setter Property="BorderThickness" Value="5"/>
+        </Style>
+        <Style x:Key="MainStyle" TargetType="Label">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Background" Value="LightSlateGray"/>
+            <Setter Property="BorderThickness" Value="5"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style x:Key="SubStyle" TargetType="Label">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="23"/>
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition Height="150"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                <Label Style="{StaticResource MainStyle}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="Workshop Selector"></Label>
+            </Border>
+            <Label Style="{StaticResource DescriptionStyle}" Grid.Column="0" Grid.Row="1" Content="Workshop" Grid.ColumnSpan="2"></Label>
+            <Label Style="{StaticResource DescriptionStyle}" Grid.Column="1" Grid.Row="1" Content="Location"></Label>
+            <Label Style="{StaticResource ErrorStyle}" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Content="{Binding MsgText}"></Label>
+            <ListBox Grid.Row="1" Grid.Column="0" Name="lstWorkshops" IsSynchronizedWithCurrentItem="true"
+                 ItemsSource="{Binding WorkShops}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedWorkShop}" SelectionChanged="Lst_SelectionChanged">
+            </ListBox>
+            <ListBox Grid.Row="1" Grid.Column="1" Name="lstLocations" IsSynchronizedWithCurrentItem="true"
+                 ItemsSource="{Binding Locations}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedLocation}" SelectionChanged="Lst_SelectionChanged">
+            </ListBox>
+            <Button Name="btnRegister" Content="Register"  Grid.Column="0" Grid.Row="4" Click="btnRegister_Click"></Button>
+            <Button Name="btnReset" Content="Reset" Grid.Column="1" Grid.Row="4" Click="BtnReset_Click"></Button>
+            <!--Sub grid 1 for display-->
+            <Grid Grid.Column="0" Grid.Row="3" Style="{StaticResource SubGrid}" Visibility="{Binding ConVisibility}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="65"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Style="{StaticResource SubStyle}" Grid.Column="0" Grid.Row="0" Content="List of Workshops"></Label>
+                <ListView ItemsSource="{Binding WorkShops}" Grid.Column="0" Grid.Row="1" Margin="8">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Workshop" Width="125"  DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="No of Days"  DisplayMemberBinding="{Binding NoOfDays}"/>
+                            <GridViewColumn Header="Registration Fees" DisplayMemberBinding="{Binding Fees}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+            <!--Sub grid 1 for display-->
+            <Grid Grid.Column="1" Grid.Row="3" Style="{StaticResource SubGrid}" Visibility="{Binding ConVisibility}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="65"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Style="{StaticResource SubStyle}" Grid.Column="0" Grid.Row="0" Content="List of Lodge Locations"></Label>
+                <ListView ItemsSource="{Binding Locations}" Grid.Column="0" Grid.Row="1" Margin="8">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Location" Width="210" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Lodging Fees" Width="auto"  DisplayMemberBinding="{Binding Fees}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+            <!--Sub grid result for display-->
+            <Grid Name="gridResult" Style="{StaticResource SubGrid}" Visibility="{Binding ResVisibility}" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Style="{StaticResource SubStyle}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="{Binding SubContent}"></Label>
+                <Label Style="{StaticResource DescriptionStyle}" Grid.Column="0" Grid.Row="1" Content="Registration Fees" ></Label>
+                <Label Name="lblRegFees" Content="{Binding RegFeesContent}" Style="{StaticResource ValueStyle}" Grid.Column="1" Grid.Row="1"></Label>
+                <Label Name="lblLodging" Content="{Binding LodgeCalContent}" Style="{StaticResource DescriptionStyle}" Grid.Column="0" Grid.Row="2"></Label>
+                <Label Name="lblLodgingFees" Content="{Binding LodgeFeesContent}" Style="{StaticResource ValueStyle}" Grid.Column="1" Grid.Row="2" ></Label>
+                <Label Style="{StaticResource DescriptionStyle}" Grid.Column="0" Grid.Row="3" Content="Total Fees"></Label>
+                <Label Name="lblTotal" Content="{Binding TotalContent}"  Style="{StaticResource ValueStyle}" Grid.Column="1" Grid.Row="3"></Label>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
